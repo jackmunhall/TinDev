@@ -44,7 +44,7 @@ def register(request):
         years_experience = form["years_exp"]
         education = form["education"]
 
-        Candidate.objects.create(bio=bio, zip=zip, skills=skills, github=github, years_experience=years_experience, education=education)
+        Candidate.objects.create(bio=bio, zip=zip, skills=skills, github=github, years_experience=years_experience, education=education, user=user)
 
         user = login(request, user)
 
