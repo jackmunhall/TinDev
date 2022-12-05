@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h1>recruiter dashboard</h1>
+    <a href="/posts/create">Create Post</a>
+
+    <ul>
+        {% for post in posts %}
+        <li><a href="/posts/update/{{post.id}}">{{post.title}}</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

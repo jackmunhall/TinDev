@@ -82,5 +82,13 @@
 
         <input type="submit">
     </form>
+
+
+    <h3>Create Recruiter Test</h3>
+    <form action="/register" method="POST">
+        {% csrf_token %}
+        {{ user_form }}
+        {{ recruiter_form }}
+    </form>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import User as CustomUser, Candidate, Recruiter
+from .models import User as CustomUser, Candidate, Recruiter, Post
 
 class CandidateInline(admin.StackedInline):
     model = Candidate
@@ -20,3 +20,4 @@ class UserAdmin(BaseUserAdmin):
 admin.site.register(CustomUser, UserAdmin)
 admin.site.register(Candidate)
 admin.site.register(Recruiter)
+admin.site.register(Post)

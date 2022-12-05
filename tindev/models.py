@@ -5,6 +5,26 @@ class User(AbstractUser):
     pass
 
 # Create your models here.
+class Recruiter(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
+    company = models.CharField(max_length=255)
+    zip = models.CharField(max_length=10)
+
+class Post(models.Model):
+    recruiter = models.ForeignKey(Recruiter, on_delete=models.RESTRICT)
+    title = models.CharField(max_length=255)
+
+    # false = part time
+    type = models.BooleanField()
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    skills = models.TextField()
+    description = models.TextField()
+    expiration = models.DateField()
+
+    # true = active
+    status = models.BooleanField()
+
 class Candidate(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100)
@@ -15,7 +35,5 @@ class Candidate(models.Model):
     years_experience = models.IntegerField()
     education = models.CharField(max_length=100, blank=True, null=True)
 
-class Recruiter(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
-    company = models.CharField(max_length=255)
-    zip = models.CharField(max_length=10)
+    # interested_posts = /odels.ManyToManyField(Post)
+    # not_interested_posts = models.ManyToManyField(Post)
