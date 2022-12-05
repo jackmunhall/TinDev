@@ -7,9 +7,12 @@
 <body>
     this is the homepage
     <div>
+        {% if not request.user %}
         <a href="/login">Login</a>
         <a href="/register">Register</a>
+        {% else %}
         <a href="/logout">Logout</a>
+        {% endif %}
     </div>
 </body>
 </html>

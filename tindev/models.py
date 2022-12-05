@@ -35,5 +35,12 @@ class Candidate(models.Model):
     years_experience = models.IntegerField()
     education = models.CharField(max_length=100, blank=True, null=True)
 
-    # interested_posts = /odels.ManyToManyField(Post)
-    # not_interested_posts = models.ManyToManyField(Post)
+    interested_posts = models.ManyToManyField(Post, related_name='interested')
+    not_interested_posts = models.ManyToManyField(Post, related_name='not_interested')
+
+class Offer(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.RESTRICT, related_name='offers')
+    candidate = models.ForeignKey(Candidate, on_delete=models.RESTRICT, related_name='offers')
+    due_date = models.DateField()
+    salary = models.IntegerField()
+    accepted = models.BooleanField(blank=True, null=True)

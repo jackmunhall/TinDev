@@ -5,9 +5,7 @@
     <title></title>
 </head>
 <body>
-    <h1>recruiter dashboard</h1>
-    <a href="/posts/create">Create Post</a>
-
+    <h1>list all posts</h1>
     <ul>
         {% for post in posts %}
         <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
