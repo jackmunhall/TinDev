@@ -1,5 +1,5 @@
 <nav>
-    {% if request.user %}
+    {% if request.user.is_authenticated %}
     <div>
         nav link 1
     </div>
