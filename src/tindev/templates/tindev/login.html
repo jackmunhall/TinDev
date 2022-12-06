@@ -1,17 +1,20 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-    <h1>Login Page</h1>
+    <img src="TinDev.jpg" alt="TinDev Logo">
+    <h1> Login </h1>
     <form action="/login" method="POST">
         {% csrf_token %}
         <div>
-            <label for="username">Username: </label>
+            <label style="margin-left: 50px" for="username">Username: </label>
             <input type="text" name="username">
         </div>
+        <p> </p>
         <div>
-            <label for="password">Password: </label>
+            <label style="margin-left: 50px" for="password">Password: </label>
             <input type="password" name="password">
         </div>
-        <div>
+        <p> </p>
+        <div style="margin-left: 30px">
             <input type="submit">
         </div>
     </form>
