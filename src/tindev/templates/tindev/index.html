@@ -2,14 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title> TinDev - Home Page </title>
 </head>
+
+<style>
+    body{
+        background-color:#ffcff1
+    }
+    h1{
+        color: black;
+        margin-left: 30px;
+    }
+    p{
+        color: darkslategray;
+        font-family: "Helvetica";
+        font-size: 15px;
+        margin-left: 30px;
+    }
+
+</style>
 <body>
-    this is the homepage
+    <img src="TinDev.jpg" alt="TinDev Logo">
+    <h1>Welcome to TinDev!</h1>
+    <p> We are a startup company that strives to ease the process of recruiting job candidates from across the country!
+        
+    </p>
+    <p>
+        Using a specialized match algorithm, our application aims to facilitate the process of finding the ideal match for a potential candidate.
+    </p>
+    <p> 
+        Some factors that may influence one's match score include <strong> years of experience and self-identified skills.</strong> 
+    </p>
+    <p> 
+        Our <strong>free</strong>  application is open to both candidates and recruiters. 
+    </p>
+    <p>
+        We believe in the unmatched convenience and simplicity of our software to completely disrupt and innovate the entire recruiting process!
+    </p>
+    
     <div>
         {% if not request.user.is_authenticated %}
-        <a href="/login">Login</a>
-        <a href="/register">Register</a>
+        <a href="/register"> Register</a>
+        
+        <p></p>
+        <p1> Already registered? Login below. </p1>
+        <p></p>
+        <a href="/login"> Login</a>
         {% else %}
         <a href="/logout">Logout</a>
         {% endif %}
