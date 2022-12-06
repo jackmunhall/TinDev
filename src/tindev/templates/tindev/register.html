@@ -1,80 +1,94 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-<h1>register page</h1>
+<img src="TinDev.jpg" alt="TinDev Logo">
+<h1> Welcome to the Registration Page.</h1>
+<p> Here, you can register for our platform as a <strong>candidate</strong> or as a <strong> recruiter. </strong> </p>
 
-<h3>Create Candidate</h3>
+<h3 style="margin-left:50px">Create Candidate</h3>
 <form action="/register" method="POST">
     {% csrf_token %}
     <div>
-        <label for="username">Username: </label>
+        <label style="margin-left: 75px" for="username">Username: </label>
         <input type="text" name="username">
     </div>
+    <p> </p>
     <div>
-        <label for="password">Password: </label>
+        <label style="margin-left: 75px" for="password">Password: </label>
         <input type="password" name="password">
     </div>
+    <p> </p>
     <div>
-        <label for="name">Name: </label>
+        <label style="margin-left: 75px" for="name">Name: </label>
         <input type="text" name="name">
     </div>
+    <p> </p>
     <div>
-        <label for="bio">Bio: </label>
+        <label style="margin-left: 75px" for="bio">Bio (Max 500 char.): </label>
         <textarea name="bio" cols="30" rows="5"></textarea>
     </div>
+    <p> </p>
     <div>
-        <label for="zip">Zip: </label>
+        <label style="margin-left: 75px" for="zip">Zip Code: </label>
         <input type="text" name="zip">
     </div>
+    <p> </p>
     <div>
-        <label for="skills">Skills: </label>
+        <label style="margin-left: 75px" for="skills">Skills: </label>
         <input type="text" name="skills">
     </div>
+    <p> </p>
     <div>
-        <label for="github">Github: </label>
+        <label style="margin-left: 75px" for="github">GitHub: </label>
         <input type="text" name="github">
     </div>
+    <p> </p>
     <div>
-        <label for="years_exp">Years of experience: </label>
+        <label style="margin-left: 75px" for="years_exp">Years of Experience: </label>
         <input type="number" name="years_exp">
     </div>
+    <p> </p>
     <div>
-        <label for="education">Education: </label>
+        <label style="margin-left: 75px" for="education">Education: </label>
         <input type="text" name="education">
     </div>
+    <p> </p>
 
     <input type="hidden" name="is_recruiter" value="0">
 
-    <div>
+    <div style="margin-left: 50px">
         <input type="submit">
     </div>
 </form>
 
-<h3>Create Recruiter</h3>
+<h3 style="margin-left:50px">Create Recruiter</h3>
 <form action="/register" method="POST">
     {% csrf_token %}
     <div>
-        <label for="username">Username: </label>
+        <label style="margin-left: 75px" for="username">Username: </label>
         <input type="text" name="username">
     </div>
+    <p></p>
 
     <div>
-        <label for="password">Password: </label>
+        <label style="margin-left: 75px" for="password">Password: </label>
         <input type="password" name="password">
     </div>
-
+    <p></p>
     <div>
-        <label for="company">Company: </label>
+        <label style="margin-left: 75px" for="company">Company: </label>
         <input type="text" name="company">
     </div>
-
+    <p></p>
     <div>
-        <label for="zip">Zip: </label>
+        <label style="margin-left: 75px" for="zip">Zip: </label>
         <input type="text" name="zip">
     </div>
-
+    <p></p>
     <input type="hidden" name="is_recruiter" value="1">
 
-    <input type="submit">
+    <div style="margin-left: 50px">
+        <input type="submit">
+    </div>
 </form>
 
 
