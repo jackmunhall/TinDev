@@ -1,0 +1,157 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+from django.utils.functional import wraps
+from django.db.models import Q
+from functools import reduce
+from ..models import *
+from ..forms import *
+
+@login_required(login_url='/login')
+def posts_create_view(request):
+    if not request.user.is_staff:
+        return redirect('/')
+
+    if request.method == "GET":
+        context = {
+            'form': PostForm()
+        }
+
+        return render(request, 'tindev/posts/create.html', context)
+
+    form = PostForm(request.POST)
+
+    if not form.is_valid():
+        return redirect('/posts/create')
+
+    data = form.cleaned_data
+
+    post = Post.objects.create(
+            recruiter=request.user.recruiter,
+            title=data['title'],
+            type=data['type'],
+            city=data['city'],
+            state=data['state'],
+            skills=data['skills'],
+            description=data['description'],
+            expiration=data['expiration'],
+            status=data['status']
+            )
+
+    return redirect('/recruiter_dashboard')
+
+@login_required(login_url='/login')
+def posts_update_view(request, id):
+    post = Post.objects.get(pk=id)
+
+    if request.method == "GET":
+        if not request.user.is_staff:
+            return redirect(f"/posts/{post.id}")
+
+        form = PostForm(instance=post)
+
+        context = {
+            'form': form,
+            'post': post,
+        }
+
+        return render(request, f"tindev/posts/update.html", context)
+
+    if not post.recruiter.user.id == request.user.id:
+        return redirect("/recruiter_dashboard")
+
+    form = PostForm(request.POST)
+    if not form.is_valid():
+        return redirect(f"/posts/update/{id}")
+
+    data = form.cleaned_data
+
+    post.title = data['title']
+    post.type = data['type']
+    post.city = data['city']
+    post.state = data['state']
+    post.skills = data['skills']
+    post.description = data['description']
+    post.expiration = data['expiration']
+    post.status = data['status']
+
+    post.save()
+
+    return redirect(f"/posts/view/{id}")
+
+@login_required(login_url='/login')
+def posts_delete_view(request, id):
+    if not request.user.is_staff:
+        return redirect(f"/posts/view/id")
+
+    post = Post.objects.get(pk=id)
+
+    if not post.recruiter.user.id == request.user.id:
+        return redirect("/recruiter_dashboard")
+
+    post.delete()
+
+    return redirect("/recruiter_dashboard")
+
+@login_required(login_url='/login')
+def posts_view(request, id):
+    post = Post.objects.get(pk=id)
+    candidates = post.interested.all()
+    offers = post.offers.all()
+    context = {
+            'post': post,
+            'candidates': candidates,
+            'offers': offers
+            }
+
+    return render(request, 'tindev/posts/view.html', context)
+
+@login_required(login_url='/login')
+def posts_all_view(request):
+    posts = Post.objects.all()
+
+    if request.method == "POST":
+        active_filter = request.POST["active_filter"]
+        location_filter = request.POST["location_filter"]
+        keyword_filter = request.POST["keyword_filter"].split()
+
+        if active_filter == "active":
+            posts = posts.filter(status=True)
+        elif active_filter == "inactive":
+            posts = posts.filter(status=False)
+
+        if location_filter:
+            posts = posts.filter(Q(city=location_filter) | Q(state=location_filter))
+
+        if keyword_filter:
+            querylist = [Q(title__icontains=keyword) for keyword in keyword_filter]
+            query = reduce(lambda a, b: a | b, querylist)
+            posts = posts.filter(query)
+
+    context = {
+            'posts': posts
+            }
+
+    return render(request, 'tindev/posts/all.html', context)
+
+@login_required(login_url='/login')
+def posts_interest_view(request, id):
+    if request.user.is_staff:
+        return redirect('/recruiter_dashboard')
+
+    if request.method != "POST":
+        return redirect(f"/posts/{{id}}")
+
+    post = Post.objects.get(pk=id)
+
+    form = request.POST
+
+    interested = True if 'interest' in form else False
+
+    if interested:
+        request.user.candidate.interested_posts.add(post)
+    else:
+        request.user.candidate.not_interested_posts.add(post)
+
+    return redirect("/candidate_dashboard")
