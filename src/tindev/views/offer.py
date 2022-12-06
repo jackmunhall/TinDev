@@ -24,15 +24,16 @@ def offer_create_view(request, id):
 
     post = Post.objects.get(pk=id)
     due_date = form['due_date']
+    salary = form['salary']
 
     candidates = form.getlist('offer_list')
     for c in candidates:
         print(c, int(c))
         c = Candidate.objects.get(pk=int(c))
         print(c)
-        Offer.objects.create(post=post, candidate=c, due_date=due_date)
+        Offer.objects.create(post=post, candidate=c, due_date=due_date, salary=salary)
 
-    return render(request, f"/posts/{id}")
+    return redirect(f"/posts/{id}")
 
 @login_required(login_url='/login')
 def offer_view(request, id):
