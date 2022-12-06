@@ -2,16 +2,22 @@
 
 {% block content %}
 
-<h1>candidate dashboard</h1>
+<h1> Welcome Candidate! </h1>
+<p>
+    Here you can view all jobs posted by recruiters as well as any potential offers.
+</p>
+<p>
+    In addition, you can <strong> favorite </strong> posts.
+</p>
 <a href="/posts">View all posts</a>
-<h2>interested posts</h2>
+<h2 style="margin-left: 30px"> Favorites </h2>
 <ul>
     {% for post in posts %}
     <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
     {% endfor %}
 </ul>
 
-<h2>offers</h2>
+<h2 style="margin-left: 30px"> Job Offers </h2>
 <ul>
     {% for offer in offers %}
     <li><a href="/offers/{{offer.post.id}}">{{offer.post.title}}</a></li>
