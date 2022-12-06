@@ -1,9 +1,18 @@
 <nav>
     {% if request.user.is_authenticated %}
-    <div>
-        nav link 1
-    </div>
+
+        {% if request.user.is_staff %}
+        <div>
+            recruiter link 1
+        </div>
+        {% else %}
+        <div>
+            candidate link 1
+        </div>
+        {% endif %}
     {% else %}
-    asdf
+    <div>
+        logged out link 1
+    </div>
     {% endif %}
 </nav>
