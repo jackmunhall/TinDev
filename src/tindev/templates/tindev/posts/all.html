@@ -1,34 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <h1>list all posts</h1>
-    <h3>filter posts</h3>
-    <form action="/posts/" method="post">
-        {% csrf_token %}
-        <label for="active_filter">Active:</label>
-        <select name="active_filter">
-            <option value="none">None</option>
-            <option value="active">Active</option>
-            <option value="inactive">Inactive</option>
-        </select>
+{% extends 'tindev/base.html' %}
 
-        <label for="location_filter">Location:</label>
-        <input type="text" name="location_filter">
+{% block content %}
+<h1>list all posts</h1>
+<h3>filter posts</h3>
+<form action="/posts/" method="post">
+    {% csrf_token %}
+    <label for="active_filter">Active:</label>
+    <select name="active_filter">
+        <option value="none">None</option>
+        <option value="active">Active</option>
+        <option value="inactive">Inactive</option>
+    </select>
 
-        <label for="keyword_filter">Keywords:</label>
-        <input type="text" name="keyword_filter">
+    <label for="location_filter">Location:</label>
+    <input type="text" name="location_filter">
 
-        <input type="submit" value="Filter">
-    </form>
+    <label for="keyword_filter">Keywords:</label>
+    <input type="text" name="keyword_filter">
 
-    <ul>
-        {% for post in posts %}
-        <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+    <input type="submit" value="Filter">
+</form>
+
+<ul>
+    {% for post in posts %}
+    <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

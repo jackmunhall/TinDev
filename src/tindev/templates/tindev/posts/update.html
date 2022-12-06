@@ -1,23 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <h1>update post</h1>
-    <form action="/posts/update/{{post.id}}" method="post">
-        {% csrf_token %}
-        <ul>
-            {{ form.as_ul }}
-        </ul>
-        <input type="submit">
-    </form>
+{% extends 'tindev/base.html' %}
+{% block content %}
 
-    <h1>delete post</h1>
-    <form action="/posts/delete/{{post.id}}">
-        {% csrf_token %}
-        <input type="submit" value="Delete">
-    </form>
-</body>
-</html>
+<h1>update post</h1>
+<form action="/posts/update/{{post.id}}" method="post">
+    {% csrf_token %}
+    <ul>
+        {{ form.as_ul }}
+    </ul>
+    <input type="submit">
+</form>
+
+<h1>delete post</h1>
+<form action="/posts/delete/{{post.id}}">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+</form>
+{% endblock %}

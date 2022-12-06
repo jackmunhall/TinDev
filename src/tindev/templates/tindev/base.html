@@ -3,10 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'tindev/style.css' %}">
 </head>
 <body>
     {% include 'tindev/navbar.html' %}
 
     {% block content %}
+    {% endblock %}
 </body>
 </html>
