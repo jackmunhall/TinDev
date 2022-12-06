@@ -6,6 +6,9 @@ from ..models import *
 from ..forms import *
 
 def register(request):
+    if request.user.is_authenticated:
+        return redirect("/")
+
     if request.method == "GET":
         user_form = UserForm()
         recruiter_form = RecruiterForm()
@@ -58,6 +61,9 @@ def register(request):
         return redirect("/candidate_dashboard")
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect("/")
+
     if request.method == "GET":
         return render(request, 'tindev/login.html')
 

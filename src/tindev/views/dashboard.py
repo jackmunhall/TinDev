@@ -9,7 +9,7 @@ from ..forms import *
 
 # Create your views here.
 def index(request):
-    if not request.user:
+    if not request.user.is_authenticated:
         return render(request, 'tindev/index.html')
 
     if request.user.is_staff:
