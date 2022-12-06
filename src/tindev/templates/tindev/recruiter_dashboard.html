@@ -1,26 +1,32 @@
 {% extends 'tindev/base.html' %}
 
 {% block content %}
-<h1>recruiter dashboard</h1>
-<a href="/posts/create">Create Post</a>
+<img src="TinDev.jpg" alt="TinDev Logo">
+<h1>Welcome Recruiter!</h1>
+<p>
+    Here you can create job postings as well as review potential candidates.
+</p>
+<a style="margin-left: 30px" href="/posts/create">Create Job Posting</a>
 
-<h1>sort posts</h1>
+<h2 style="margin-left: 30px">Filter Posts</h2>
 <form action="/recruiter_dashboard" method="post">
     {% csrf_token %}
-    <label for="active_filter">Active:</label>
+    <label style="margin-left: 50px" for="active_filter">Active?:</label>
     <select name="active_filter">
-        <option value="none">None</option>
+        <option value="none">Both</option>
         <option value="active">Active</option>
         <option value="inactive">Inactive</option>
     </select>
+    <p> </p>
 
-    <label for="interested_filter">At least 1 interested:</label>
+    <label style="margin-left: 50px" for="interested_filter">At least 1 candidate interested?:</label>
     <select name="interested_filter">
         <option value="false">False</option>
         <option value="true">True</option>
     </select>
+    <p></p>
 
-    <input type="submit" value="Filter">
+    <input style="margin-left: 30px" type="submit" value="Filter">
 </form>
 
 <ul>
