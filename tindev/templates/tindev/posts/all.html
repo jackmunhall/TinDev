@@ -6,6 +6,25 @@
 </head>
 <body>
     <h1>list all posts</h1>
+    <h3>filter posts</h3>
+    <form action="/posts/" method="post">
+        {% csrf_token %}
+        <label for="active_filter">Active:</label>
+        <select name="active_filter">
+            <option value="none">None</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+
+        <label for="location_filter">Location:</label>
+        <input type="text" name="location_filter">
+
+        <label for="keyword_filter">Keywords:</label>
+        <input type="text" name="keyword_filter">
+
+        <input type="submit" value="Filter">
+    </form>
+
     <ul>
         {% for post in posts %}
         <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>

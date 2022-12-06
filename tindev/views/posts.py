@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils.functional import wraps
+from django.db.models import Q
+from functools import reduce
 from ..models import *
 from ..forms import *
 
@@ -108,6 +110,24 @@ def posts_view(request, id):
 @login_required(login_url='/login')
 def posts_all_view(request):
     posts = Post.objects.all()
+
+    if request.method == "POST":
+        active_filter = request.POST["active_filter"]
+        location_filter = request.POST["location_filter"]
+        keyword_filter = request.POST["keyword_filter"].split()
+
+        if active_filter == "active":
+            posts = posts.filter(status=True)
+        elif active_filter == "inactive":
+            posts = posts.filter(status=False)
+
+        if location_filter:
+            posts = posts.filter(Q(city=location_filter) | Q(state=location_filter))
+
+        if keyword_filter:
+            querylist = [Q(title__icontains=keyword) for keyword in keyword_filter]
+            query = reduce(lambda a, b: a | b, querylist)
+            posts = posts.filter(query)
 
     context = {
             'posts': posts
