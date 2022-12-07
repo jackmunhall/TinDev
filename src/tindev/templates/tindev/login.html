@@ -4,25 +4,41 @@
     <meta charset="UTF-8">
     <title> TinDev - Login </title>
 </head>
+<style>
 
+.form-group {
+    width: 20%;
+}
+
+* {
+    margin: auto
+}
+
+h3, h1, p {
+    text-align: center;
+}
+
+</style>
 {% extends 'tindev/base.html' %}
 {% block content %}
     <!-- <img src="TinDev.jpg" alt="TinDev Logo"> -->
-    <h1> Login </h1>
-    <form action="/login" method="POST">
+    <div style="margin-top: 12%">
+        <h1>Login</h1>
+    </div>
+    <form class="form-vertical" action="/login" method="POST">
         {% csrf_token %}
-        <div>
-            <label style="margin-left: 50px" for="username">Username: </label>
-            <input type="text" name="username">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input class="form-control" type="text" name="username">
         </div>
         <p> </p>
-        <div>
-            <label style="margin-left: 50px" for="password">Password: </label>
-            <input type="password" name="password">
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" type="password" name="password">
         </div>
         <p> </p>
-        <div style="margin-left: 30px">
-            <input type="submit">
+        <div class="form-group">
+            <input style="display: block; margin: auto;" class="btn btn-primary" type="submit">
         </div>
     </form>
 {% endblock %}
