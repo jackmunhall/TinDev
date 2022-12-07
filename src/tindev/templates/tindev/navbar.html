@@ -1,4 +1,4 @@
-<nav>
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
     {% if request.user.is_authenticated %}
 
         {% if request.user.is_staff %}
@@ -15,4 +15,35 @@
         logged out link 1
     </div>
     {% endif %}
-</nav>
+</nav> -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">TinDev</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+    {% if request.user.is_authenticated %}
+
+        {% if request.user.is_staff %}
+
+            <li class="nav-item active">
+                <a class="nav-link" href="/recruiter_dashboard">Dashboard<span class="sr-only">(current)</span></a>
+            </li>
+
+        {% else %}
+
+            <li class="nav-item active">
+            <a class="nav-link" href="/candidate_dashboard">Dashboard<span class="sr-only">(current)</span></a>
+            </li>
+        
+        {% endif %}
+
+        <li class="nav-item active">
+            <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
+        </li>
+
+    {% endif %}
+    </ul>
+    </div>
+  </nav>
