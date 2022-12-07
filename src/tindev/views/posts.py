@@ -160,8 +160,10 @@ def posts_interest_view(request, id):
     return redirect("/candidate_dashboard")
 
 def computeScore(candidate, post):
-    candSkills = candidate.skills.split(',').strip()
-    postSkills = post.skills.split(',').strip()
+    candSkills =  [x.strip() for x in candidate.skills.split(',')]
+    # candSkills = candidate.skills.split(',').strip()
+    postSkills = [x.strip() for x in post.skills.split(',')]
+    # postSkills = post.skills.split(',').strip()
 
     matches = 0
     

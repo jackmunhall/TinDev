@@ -19,8 +19,8 @@
     <ul>
         {% for c in candScores %}
         <li>
-            <label for="">{{c[0].name}} space {{c[1]}}</label>
-            <input type="checkbox" name="offer_list" value="{{c[0].id}}">
+            <label for="">{{ c.0.name }} space {{c.1}}% match</label>
+            <input type="checkbox" name="offer_list" value="{{c.0.id}}">
         </li>
         {% endfor %}
     </ul>
