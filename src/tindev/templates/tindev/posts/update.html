@@ -1,18 +1,18 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-
-<h1>update post</h1>
+<img src="TinDev.jpg" alt="TinDev Logo">
+<h1>Update Job Posting</h1>
 <form action="/posts/update/{{post.id}}" method="post">
     {% csrf_token %}
     <ul>
         {{ form.as_ul }}
     </ul>
-    <input type="submit">
+    <input style="margin-left: 40px" type="submit">
 </form>
 
-<h1>delete post</h1>
+<h1>Delete Job Posting </h1>
 <form action="/posts/delete/{{post.id}}">
     {% csrf_token %}
-    <input type="submit" value="Delete">
+    <input style="margin-left: 40px" type="submit" value="Delete">
 </form>
 {% endblock %}

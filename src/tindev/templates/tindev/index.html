@@ -7,7 +7,7 @@
 
 <style>
     body{
-        background-color:#ffcff1
+        background-color: #FECFF1;
     }
     h1{
         color: black;
@@ -15,41 +15,42 @@
     }
     p{
         color: darkslategray;
-        font-family: "Helvetica";
+        font-family: Arial, Helvetica, sans-serif;
         font-size: 15px;
         margin-left: 30px;
     }
+
 
 </style>
 <body>
     <img src="TinDev.jpg" alt="TinDev Logo">
     <h1>Welcome to TinDev!</h1>
-    <p> We are a startup company that strives to ease the process of recruiting job candidates from across the country!
-        
+    <p> </p>
+    <h2 style="margin-left: 30px"> Who are We? </h2>
+    <p> 
+        We are a startup company ran by four Notre Dame Computer Science students chartered to create applications for the benefit of recruiters all around the country. The product we envision is called <strong> TinDev</strong>.
     </p>
     <p>
-        Using a specialized match algorithm, our application aims to facilitate the process of finding the ideal match for a potential candidate.
+        At its core, <strong> TinDev </strong> is meant to disrupt and innovate the recruiting process. It aims to facilitate the process of finding the perfect match for a technical position, whether it is a Software Engineering, Quality Engineering, or Full Stack Developer, etc... 
     </p>
     <p> 
-        Some factors that may influence one's match score include <strong> years of experience and self-identified skills.</strong> 
+        A successful implementation of TinDev should make it easy for any job-seeking candidate to register and be able to see open positions and demonstrate interest. Recruiters can also see qualified candidates within the area.
     </p>
     <p> 
-        Our <strong>free</strong>  application is open to both candidates and recruiters. 
+        We want a product whose emphasis is on ease of use and straightforward navigation. Our <strong>free</strong>  application is open to both candidates and recruiters. 
     </p>
-    <p>
-        We believe in the unmatched convenience and simplicity of our software to completely disrupt and innovate the entire recruiting process!
-    </p>
+   
     
     <div>
         {% if not request.user.is_authenticated %}
-        <a href="/register"> Register</a>
+        <a style="margin-left: 30px" href="/register"> Register</a>
         
         <p></p>
-        <p1> Already registered? Login below. </p1>
+        <p> Already registered? Login below. </p>
         <p></p>
-        <a href="/login"> Login</a>
+        <a style="margin-left: 30px" href="/login"> Login</a>
         {% else %}
-        <a href="/logout">Logout</a>
+        <a style="margin-left: 30px" href="/logout">Logout</a>
         {% endif %}
     </div>
 </body>

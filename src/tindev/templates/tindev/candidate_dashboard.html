@@ -1,7 +1,8 @@
 {% extends 'tindev/base.html' %}
 
 {% block content %}
-
+<title> TinDev - Candidate Dashboard </title>
+<img src="TinDev.jpg" alt="TinDev Logo">
 <h1> Welcome Candidate! </h1>
 <p>
     Here you can view all jobs posted by recruiters as well as any potential offers.
@@ -9,8 +10,8 @@
 <p>
     In addition, you can <strong> favorite </strong> posts.
 </p>
-<a href="/posts">View all posts</a>
-<h2 style="margin-left: 30px"> Favorites </h2>
+<a style="margin-left: 30px" href="/posts">Click here to view all job postings</a>
+<h2 style="margin-left: 30px"> My Favorites </h2>
 <ul>
     {% for post in posts %}
     <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>

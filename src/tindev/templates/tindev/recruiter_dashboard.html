@@ -1,6 +1,7 @@
 {% extends 'tindev/base.html' %}
 
 {% block content %}
+<title> TinDev - Recruiter Dashboard </title>
 <img src="TinDev.jpg" alt="TinDev Logo">
 <h1>Welcome Recruiter!</h1>
 <p>
@@ -29,9 +30,10 @@
     <input style="margin-left: 30px" type="submit" value="Filter">
 </form>
 
+<h2 style="margin-left: 30px"> Your Job Postings </h2>
 <ul>
     {% for post in posts %}
-    <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+    <li style="margin-left: 50px"><a href="/posts/{{post.id}}">{{post.title}}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

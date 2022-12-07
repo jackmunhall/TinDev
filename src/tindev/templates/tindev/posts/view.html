@@ -1,19 +1,25 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-<h1>view post </h1>
+<style>
+    li{
+        margin-left:30px;
+    }
+</style>
+<img src="TinDev.jpg" alt="TinDev Logo">
+<h1> Job Details </h1>
 <ul>
-    <li>{{post.title}}</li>
-    <li>{{post.type}}</li>
-    <li>{{post.city}}</li>
-    <li>{{post.state}}</li>
-    <li>{{post.skills}}</li>
-    <li>{{post.description}}</li>
-    <li>{{post.expiration}}</li>
-    <li>{{post.status}}</li>
+    <li><strong>Position Title:</strong> {{post.title}}</li>
+    <li><strong>Full Time or Part Time? </strong>{{post.type}}</li>
+    <li><strong>City: </strong>{{post.city}}</li>
+    <li><strong>State: </strong>{{post.state}}</li>
+    <li><strong>List of Preferred Skills:</strong> {{post.skills}}</li>
+    <li><strong> Job Description:</strong>  {{post.description}}</li>
+    <li><strong> Job Expiration Date: </strong> {{post.expiration}}</li>
+    <li><strong> Status (Active / Inactive): </strong> {{post.status}}</li>
 </ul>
 
 {% if request.user.is_staff %}
-<h1>interested candidates</h1>
+<h1>Interested Candidates</h1>
 <form action="/offers/create/{{post.id}}" method="post">
     {% csrf_token %}
     <ul>
@@ -25,27 +31,29 @@
         {% endfor %}
     </ul>
     <div>
-        <label for="salary">Due:</label>
+        <label style="margin-left: 50px" for="salary">Starting Salary (USD): </label>
         <input type="number" name="salary" required>
     </div>
+    <p> </p>
     <div>
-        <label for="due_date">Due:</label>
+        <label style="margin-left: 50px" for="due_date">Reply to Offer By:</label>
         <input type="date" name="due_date" required>
     </div>
-    <input type="submit" value="Send offers">
+    <p> </p>
+    <input style="margin-left: 30px" type="submit" value="Send Offer">
 </form>
-<h1>offers sent list</h1>
+<h1>List of Offers Sent</h1>
 <ul>
     {% for o in offers %}
-    <li>{{o.candidate.name}} | {{o.due_date}}</li>
+    <li style="margin-left: 50px">{{o.candidate.name}} | {{o.due_date}}</li>
     {% endfor %}
 </ul>
-<h1>update post</h1>
-<a href="/posts/update/{{post.id}}">Update</a>
+<h1>Update Post</h1>
+<a style="margin-left: 50px" href="/posts/update/{{post.id}}">Update</a>
 {% else %}
 <form action="/posts/interest/{{post.id}}" method="post">
     {% csrf_token %}
-    <label for="interest">Interested? </label>
+    <label style="margin-left: 50px" for="interest"> Submit application? </label>
     <input name="interest" type="checkbox">
     <input type="submit">
 </form>
