@@ -1,22 +1,39 @@
 from django.forms import ModelForm
-from django.forms import ModelForm, TextInput, EmailInput
+from django.forms import ModelForm, TextInput, EmailInput, CheckboxInput
 from .models import *
 
 class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'type', 'city', 'state', 'skills', 'description', 'expiration', 'status']
+        labels = {
+            'skills':'Skills (comma-separated):'
+        }
         widgets = {
             'title': TextInput(attrs={
                 'class': "form-control",
-                'style': 'max-width: 300px;',
-                'placeholder': 'Name'
+                'style': 'max-width: 300px; ',
                 }),
-            'email': EmailInput(attrs={
-                'class': "form-control", 
+            'type': CheckboxInput(attrs={
+                'class': "", 
+                'style': 'max-width: 300px; ',
+                }),
+            'city': TextInput(attrs={
+                'class': "form-control",
                 'style': 'max-width: 300px;',
-                'placeholder': 'Email'
-                })
+                }), 
+            'state': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                }), 
+            'skills': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                }), 
+            'expiration': TextInput(attrs={
+                'class': "form-control",
+                'style': 'max-width: 300px;',
+                }), 
         }
 
 class UserForm(ModelForm):
