@@ -17,10 +17,10 @@
 <form action="/offers/create/{{post.id}}" method="post">
     {% csrf_token %}
     <ul>
-        {% for c in candidates %}
+        {% for c in candScores %}
         <li>
-            <label for="">{{c.name}}</label>
-            <input type="checkbox" name="offer_list" value="{{c.id}}">
+            <label for="">{{c[0].name}} space {{c[1]}}</label>
+            <input type="checkbox" name="offer_list" value="{{c[0].id}}">
         </li>
         {% endfor %}
     </ul>
