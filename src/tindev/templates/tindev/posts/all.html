@@ -1,34 +1,55 @@
 {% extends 'tindev/base.html' %}
 
 {% block content %}
+<style>
+h1 {
+    margin-top: 7%;
+}
+
+h3, h1, p, h2 {
+    text-align: center;
+}
+
+.form-group {
+    width: 20%;
+    margin: auto;
+}
+</style>
 <title> TinDev - Postings </title>
 <!-- <img src="TinDev.jpg" alt="TinDev Logo"> -->
 <h1> Job Postings </h1>
 <p> The following are <strong>job postings </strong> made by a recruiter. </p>
-<h3 style="margin-left: 50px">Filter Posts</h3>
+<h3>Filter Posts</h3>
 <form action="/posts/" method="post">
     {% csrf_token %}
-    <label style="margin-left: 75px" for="active_filter">Currently active?:</label>
-    <select name="active_filter">
-        <option value="none">Both</option>
-        <option value="active">Active</option>
-        <option value="inactive">Inactive</option>
-    </select>
+
+    <div class="form-group">
+        <label for="active_filter">Currently active?</label>
+        <select class="form-control" name="active_filter">
+            <option value="none">Both</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+    </div>
     <p> </p>
 
-    <label style="margin-left: 75px" for="location_filter">Location:</label>
-    <input type="text" name="location_filter">
+    <div class="form-group">
+        <label for="location_filter">Location</label>
+        <input class="form-control" type="text" name="location_filter">
+    </div>
     <p> </p>
 
-    <label style="margin-left: 75px" for="keyword_filter">Keywords:</label>
-    <input type="text" name="keyword_filter">
+    <div class="form-group">
+        <label for="keyword_filter">Keywords</label>
+        <input class="form-control" type="text" name="keyword_filter">
+    </div>
 
     <input type="submit" value="Filter">
 </form>
 
 <ul>
     {% for post in posts %}
-    <li style="margin-left: 75px" ><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+    <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
