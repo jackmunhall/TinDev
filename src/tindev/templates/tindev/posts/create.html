@@ -1,12 +1,27 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-<img src="TinDev.jpg" alt="TinDev Logo">
+<!-- <img src="TinDev.jpg" alt="TinDev Logo"> -->
+<style>
+h1 {
+    margin-top: 3%;
+}
+
+h3, h1, p, h2 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+}
+</style>
 <h1>Create Job Posting</h1>
 <form action="/posts/create" method="post">
     {% csrf_token %}
-    <ul>
-        {{ form.as_ul }}
-    </ul>
+    <div class="form-group">
+        <ul >
+            {{ form.as_ul }}
+        </ul>
+    </div>
     <input style="margin-left: 40px" type="submit">
 </form>
 {% endblock %}
