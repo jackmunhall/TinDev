@@ -1,3 +1,17 @@
 html {
-    background: red;
+    /* background: #FECFF1; */
+    font-family: Arial, Helvetica, sans-serif
+} 
+    
+    
+/* h1{
+    color: black;
+    margin-left: 30px;
+} */
+    
+p{
+    color: darkslategray;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-left: 30px;
 }

@@ -1,87 +1,123 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-<h1>register page</h1>
+<!-- <img src="TinDev.jpg" alt="TinDev Logo"> -->
 
+
+<style>
+
+.form-group {
+    width: 20%;
+}
+
+* {
+    margin: auto
+}
+
+h3, h1, p {
+    text-align: center;
+}
+
+.btn-primary {
+    margin: auto;
+    display: block;
+}
+
+</style>
+<title> TinDev - Register </title>
+<h1> Welcome to the Registration Page.</h1>
+<p> Here, you can register for our platform as a <strong>candidate</strong> or as a <strong> recruiter. </strong> </p>
 <h3>Create Candidate</h3>
-<form action="/register" method="POST">
+<form class="form-vertical" action="/register" method="POST">
     {% csrf_token %}
-    <div>
-        <label for="username">Username: </label>
-        <input type="text" name="username">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input class="form-control" type="text" name="username">
     </div>
-    <div>
-        <label for="password">Password: </label>
-        <input type="password" name="password">
+    <p> </p>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" name="password">
     </div>
-    <div>
-        <label for="name">Name: </label>
-        <input type="text" name="name">
+    <p> </p>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input class="form-control" type="text" name="name">
     </div>
-    <div>
-        <label for="bio">Bio: </label>
-        <textarea name="bio" cols="30" rows="5"></textarea>
+    <p> </p>
+    <div class="form-group">
+        <label for="bio">Bio (Max 500 char.)</label>
+        <textarea class="form-control" name="bio" cols="30" rows="5"></textarea>
     </div>
-    <div>
-        <label for="zip">Zip: </label>
-        <input type="text" name="zip">
+    <p> </p>
+    <div class="form-group">
+        <label for="zip">Zip Code</label>
+        <input class="form-control" type="text" name="zip">
     </div>
-    <div>
-        <label for="skills">Skills: </label>
-        <input type="text" name="skills">
+    <p> </p>
+    <div class="form-group">
+        <label for="skills">Skills</label>
+        <input class="form-control" type="text" name="skills">
     </div>
-    <div>
-        <label for="github">Github: </label>
-        <input type="text" name="github">
+    <p> </p>
+    <div class="form-group">
+        <label for="github">GitHub</label>
+        <input class="form-control" type="text" name="github">
     </div>
-    <div>
-        <label for="years_exp">Years of experience: </label>
-        <input type="number" name="years_exp">
+    <p> </p>
+    <div class="form-group">
+        <label for="years_exp">Years of Experience</label>
+        <input class="form-control" type="number" name="years_exp">
     </div>
-    <div>
-        <label for="education">Education: </label>
-        <input type="text" name="education">
+    <p> </p>
+    <div class="form-group">
+        <label for="education">Education</label>
+        <input class="form-control" type="text" name="education">
     </div>
+    <p> </p>
 
     <input type="hidden" name="is_recruiter" value="0">
 
-    <div>
-        <input type="submit">
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit">
     </div>
 </form>
 
-<h3>Create Recruiter</h3>
+<h3 >Create Recruiter</h3>
 <form action="/register" method="POST">
     {% csrf_token %}
-    <div>
+    <div class="form-group">
         <label for="username">Username: </label>
-        <input type="text" name="username">
+        <input class="form-control" type="text" name="username">
     </div>
+    <p></p>
 
-    <div>
+    <div class="form-group">
         <label for="password">Password: </label>
-        <input type="password" name="password">
+        <input class="form-control" type="password" name="password">
     </div>
-
-    <div>
+    <p></p>
+    <div class="form-group">
         <label for="company">Company: </label>
-        <input type="text" name="company">
+        <input class="form-control" type="text" name="company">
     </div>
-
-    <div>
-        <label for="zip">Zip: </label>
-        <input type="text" name="zip">
+    <p></p>
+    <div class="form-group">
+        <label for="zip">Zip Code: </label>
+        <input class="form-control" type="text" name="zip">
     </div>
-
+    <p></p>
     <input type="hidden" name="is_recruiter" value="1">
 
-    <input type="submit">
+    <div class="form-group">
+        <input class="btn btn-primary" type="submit">
+    </div>
 </form>
 
 
-<h3>Create Recruiter Test</h3>
+<!-- <h3>Create Recruiter Test</h3>
 <form action="/register" method="POST">
     {% csrf_token %}
     {{ user_form }}
     {{ recruiter_form }}
-</form>
+</form> -->
 {% endblock %}
