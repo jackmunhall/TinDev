@@ -53,7 +53,7 @@ h1 {
 <h1>Interested Candidates</h1>
 <form action="/offers/create/{{post.id}}" method="post">
     {% csrf_token %}
-    <ul style="padding-left: 0;">
+    <ul class="list-group" style="padding-left: 0;">
         {% for c in candScores %}
         <li>
             <label for="">{{ c.0.name }} space {{c.1}}% match</label>
@@ -76,7 +76,7 @@ h1 {
 <h1>List of Offers Sent</h1>
 <ul class="list-group">
     {% for o in offers %}
-    <li style="margin-left: 50px">{{o.candidate.name}} | {{o.due_date}}
+    <li >{{o.candidate.name}} | {{o.due_date}}
         {% if now > o.due_date %}
         (expired)
         {% endif %}
