@@ -1,11 +1,31 @@
-How To Use: <br>
+# About The Project
 
-1. Clone our repository from github.<br>
+Our project is TinDev, a web app meant to help recruiters and developers engage in the job process more easily. 
 
-2. Install Python3<br>
+## Built With
+List here all the dependencies of your project (including version). For example:
 
-3. Navigate to src folder of cloned repo <br>
+* [Python](https://www.python.org/)
+* [Django](https://www.djangoproject.com/)
+* [Bootstrap](https://getbootstrap.com)
 
-4. Run the command "python3 manage.py runserver" while inside src folder<br>
+## Getting Started
 
-5. Click on the link that appears in terminal or navigate to localhost:8000<br>
+This is an example of how you may give instructions on setting up your project locally.
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* Python3 (https://www.python.org/)
+
+### Installation
+
+Describe here the list of steps to get your project running. For example:
+1. git clone 
+   ```git clone https://github.com/github_username/repo_name.git
+   ```
+2. Make sure python3 is installed on your computer
+3. Navigate to src folder inside cloned repository
+4. Run the command: "python3 manage.py runserver" inside of the src folder
+5. Navigate to localhost:8000 to use the web application!
