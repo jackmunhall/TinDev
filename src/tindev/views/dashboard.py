@@ -38,7 +38,8 @@ def index(request):
     offers = request.user.candidate.offers.all()
     context = {
             'posts': posts,
-            'offers': offers
+            'offers': offers,
+            'now': now
             }
     return render(request, "tindev/candidate_dashboard.html", context)
 

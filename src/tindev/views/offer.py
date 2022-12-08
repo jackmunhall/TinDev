@@ -70,4 +70,4 @@ def offer_respond_view(request, id):
     offer.accepted = response
     offer.save()
 
-    return HttpResponse(response)
+    return redirect("/")

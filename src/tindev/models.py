@@ -39,7 +39,7 @@ class Candidate(models.Model):
     not_interested_posts = models.ManyToManyField(Post, related_name='not_interested')
 
 class Offer(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.RESTRICT, related_name='offers')
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='offers')
     candidate = models.ForeignKey(Candidate, on_delete=models.RESTRICT, related_name='offers')
     due_date = models.DateField()
     salary = models.IntegerField()

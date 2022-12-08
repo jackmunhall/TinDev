@@ -61,7 +61,12 @@ h3, h1, p, h2 {
         <h2> Job Offers </h2>
         <ul class="list-group">
             {% for offer in offers %}
-            <li class="list-group-item list-group-item-secondary"><a href="/offers/{{offer.post.id}}">{{offer.post.title}}</a></li>
+            <li><a href="/offers/{{offer.post.id}}">{{offer.post.title}}</a>
+                | {{offer.due_date}}
+                {% if now > offer.due_date %}
+                (expired)
+                {% endif %}
+            </li>
             {% endfor %}
         </ul>
     </div>

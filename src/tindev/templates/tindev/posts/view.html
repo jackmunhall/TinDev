@@ -76,7 +76,11 @@ h1 {
 <h1>List of Offers Sent</h1>
 <ul class="list-group">
     {% for o in offers %}
-    <li class="cand list-group-item">{{o.candidate.name}} | {{o.due_date}}</li>
+    <li style="margin-left: 50px">{{o.candidate.name}} | {{o.due_date}}
+        {% if now > o.due_date %}
+        (expired)
+        {% endif %}
+    </li>
     {% endfor %}
 </ul>
 <h1>Update Post</h1>

@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.utils.functional import wraps
 from django.db.models import Q
+import datetime
 from functools import reduce
 from ..models import *
 from ..forms import *
@@ -78,7 +79,7 @@ def posts_update_view(request, id):
 
     post.save()
 
-    return redirect(f"/posts/view/{id}")
+    return redirect(f"/posts/{id}")
 
 @login_required(login_url='/login')
 def posts_delete_view(request, id):
@@ -99,10 +100,13 @@ def posts_view(request, id):
     post = Post.objects.get(pk=id)
     candidates = post.interested.all()
     offers = post.offers.all()
+    now = datetime.datetime.now()
+    now = datetime.date(now.year, now.month, now.day)
     context = {
             'post': post,
             'candidates': candidates,
-            'offers': offers
+            'offers': offers,
+            'now': now,
             }
 
     return render(request, 'tindev/posts/view.html', context)
