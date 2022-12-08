@@ -80,6 +80,11 @@ h1 {
         {% if now > o.due_date %}
         (expired)
         {% endif %}
+        {% if o.accepted == True %}
+        (accepted)
+        {% elif o.accepted == False %}
+        (rejected)
+        {% endif %}
     </li>
     {% endfor %}
 </ul>
