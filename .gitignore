@@ -7,8 +7,6 @@ include/
 pyright*
 pyvenv.cfg
 
-**/db.sqlite3*
-
 # C extensions
 *.so
 
