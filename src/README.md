@@ -22,9 +22,7 @@ This is an example of how to list things you need to use the software and how to
 ### Installation
 
 Describe here the list of steps to get your project running. For example:
-1. git clone 
-   ```git clone https://github.com/github_username/repo_name.git
-   ```
+1. git clone (command: git clone git@github.com:wasingera/paradigms-project.git)
 2. Make sure python3 is installed on your computer
 3. Navigate to src folder inside cloned repository
 4. Run the command: "python3 manage.py runserver" inside of the src folder
