@@ -7,7 +7,8 @@ class PostForm(ModelForm):
         model = Post
         fields = ['title', 'type', 'city', 'state', 'skills', 'description', 'expiration', 'status']
         labels = {
-            'skills':'Skills (comma-separated):'
+            'skills':'Skills (comma-separated):',
+            'expiration':'Expiration (MM/DD/YYYY):'
         }
         widgets = {
             'title': TextInput(attrs={

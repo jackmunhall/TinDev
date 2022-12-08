@@ -1,18 +1,36 @@
 {% extends 'tindev/base.html' %}
 {% block content %}
-<img src="TinDev.jpg" alt="TinDev Logo">
+<!-- <img src="TinDev.jpg" alt="TinDev Logo"> -->
+<style>
+
+.form-group {
+    width: 20%;
+    margin: auto;
+} 
+
+.yeet {
+    list-style: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+</style>
 <h1>Update Job Posting</h1>
 <form action="/posts/update/{{post.id}}" method="post">
     {% csrf_token %}
-    <ul>
-        {{ form.as_ul }}
-    </ul>
-    <input style="margin-left: 40px" type="submit">
+    <div class="form-group">
+        <ul class="yeet">
+            {{ form.as_ul }}
+        </ul>
+    </div>
+    <input style="display: block; margin: auto;" class="btn btn-secondary" type="submit">
 </form>
 
 <h1>Delete Job Posting </h1>
 <form action="/posts/delete/{{post.id}}">
     {% csrf_token %}
-    <input style="margin-left: 40px" type="submit" value="Delete">
+    <input style="display: block; margin: auto;" class="btn btn-secondary" type="submit" value="Delete">
 </form>
 {% endblock %}
