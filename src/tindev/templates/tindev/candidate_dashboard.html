@@ -66,6 +66,12 @@ h3, h1, p, h2 {
                 {% if now > offer.due_date %}
                 (expired)
                 {% endif %}
+                {{ offer.accepted }}
+                {% if offer.accepted == True %}
+                (accepted)
+                {% elif offer.accepted == False %}
+                (rejected)
+                {% endif %}
             </li>
             {% endfor %}
         </ul>

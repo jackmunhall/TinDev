@@ -17,10 +17,12 @@
 <p >Starting Salary: ${{offer.salary}}</p>
 <p >Offer Expires {{offer.due_date}}</p>
 
+{% if now <= offer.due_date %}
 <form action="/offers/respond/{{offer.id}}" method="post">
     {% csrf_token %}
     <label for="response">Accept {{offer.post.title}}? </label>
     <input type="checkbox" name="response">
     <input style="margin-left: 1%" class="btn btn-secondary" type="submit" value="Submit">
 </form>
+{% endif %}
 {% endblock %}

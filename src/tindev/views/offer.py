@@ -28,10 +28,8 @@ def offer_create_view(request, id):
 
     candidates = form.getlist('offer_list')
     for c in candidates:
-        print(c, int(c))
         c = Candidate.objects.get(pk=int(c))
-        print(c)
-        Offer.objects.create(post=post, candidate=c, due_date=due_date, salary=salary)
+        Offer.objects.create(post=post, candidate=c, due_date=due_date, salary=salary, accepted=None)
 
     return redirect(f"/posts/{id}")
 
@@ -41,9 +39,12 @@ def offer_view(request, id):
         return redirect(f"/recruiter_dashboard")
 
     offer = Offer.objects.get(pk=id)
+    now = datetime.datetime.now()
+    now = datetime.date(now.year, now.month, now.day)
 
     context = {
         'offer': offer,
+        'now': now,
     }
 
     return render(request, 'tindev/offers/view.html', context)
@@ -57,17 +58,13 @@ def offer_respond_view(request, id):
         return redirect(f"/offers/{id}")
 
     response = True if 'response' in request.POST else False
+    print("RESPONSE", response)
 
     offer = Offer.objects.get(pk=id)
 
-    now = datetime.datetime.now()
-    now = datetime.date(now.year, now.month, now.day)
-    due = offer.due_date
-
-    if (now > due):
-        return HttpResponse("Offer expired")
-
     offer.accepted = response
     offer.save()
+
+    print("CURR", offer.accepted)
 
     return redirect("/")
