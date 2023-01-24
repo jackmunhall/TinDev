@@ -1,0 +1,53 @@
+{% extends 'tindev/base.html' %}
+{% block content %}
+<h1>view post </h1>
+<ul>
+    <li>{{post.title}}</li>
+    <li>{{post.type}}</li>
+    <li>{{post.city}}</li>
+    <li>{{post.state}}</li>
+    <li>{{post.skills}}</li>
+    <li>{{post.description}}</li>
+    <li>{{post.expiration}}</li>
+    <li>{{post.status}}</li>
+</ul>
+
+{% if request.user.is_staff %}
+<h1>interested candidates</h1>
+<form action="/offers/create/{{post.id}}" method="post">
+    {% csrf_token %}
+    <ul>
+        {% for c in candScores %}
+        <li>
+            <label for="">{{ c.0.name }} space {{c.1}}% match</label>
+            <input type="checkbox" name="offer_list" value="{{c.0.id}}">
+        </li>
+        {% endfor %}
+    </ul>
+    <div>
+        <label for="salary">Due:</label>
+        <input type="number" name="salary" required>
+    </div>
+    <div>
+        <label for="due_date">Due:</label>
+        <input type="date" name="due_date" required>
+    </div>
+    <input type="submit" value="Send offers">
+</form>
+<h1>offers sent list</h1>
+<ul>
+    {% for o in offers %}
+    <li>{{o.candidate.name}} | {{o.due_date}}</li>
+    {% endfor %}
+</ul>
+<h1>update post</h1>
+<a href="/posts/update/{{post.id}}">Update</a>
+{% else %}
+<form action="/posts/interest/{{post.id}}" method="post">
+    {% csrf_token %}
+    <label for="interest">Interested? </label>
+    <input name="interest" type="checkbox">
+    <input type="submit">
+</form>
+{% endif %}
+{% endblock %}

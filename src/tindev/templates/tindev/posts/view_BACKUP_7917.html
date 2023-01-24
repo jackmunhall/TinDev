@@ -53,11 +53,19 @@ h1 {
 <h1>Interested Candidates</h1>
 <form action="/offers/create/{{post.id}}" method="post">
     {% csrf_token %}
+<<<<<<< HEAD
     <ul style="padding-left: 0;">
+        {% for c in candidates %}
+        <li class="cand">
+            <label for="">{{c.name}}</label>
+            <input type="checkbox" name="offer_list" value="{{c.id}}">
+=======
+    <ul>
         {% for c in candScores %}
         <li>
             <label for="">{{ c.0.name }} space {{c.1}}% match</label>
             <input type="checkbox" name="offer_list" value="{{c.0.id}}">
+>>>>>>> master
         </li>
         {% endfor %}
     </ul>
